@@ -58,18 +58,21 @@ The transformed data from the SQL View was loaded into Power BI. To maintain a c
 Advanced DAX functions were utilized to calculate dynamic market share and total revenues that respond smoothly to dashboard filters:
 
 Total Revenue: Computes the total revenue generated across the selected categories, displaying a total of 714.00K ر.س on the executive cards.
-```dax
+
 Code snippet
+```dax
 Total Revenue = SUM('SalesLT v_SalesPerformance'[TotalCategorySales])
 ```
 Total Sales (All Categories): Utilizes CALCULATE combined with ALL to bypass visual filters, securing the absolute grand total for percentage distribution calculations.
-```dax
+
 Code snippet
+```dax
 Total Sales (All Categories) = CALCULATE([total revenue], ALL('SalesLT v_SalesPerformance'))
 ```
 Category Contribution (%): Measures the specific market share or contribution of a performance class or category relative to the total enterprise revenue, using a safe DIVIDE function to prevent division-by-zero errors.
-```dax
+
 Code snippet
+```dax
 Category Contribution % = DIVIDE([total revenue], [Total Sales (All Categories)])
 ```
 🎨 Phase 3: Dashboard Design & UX Strategy
